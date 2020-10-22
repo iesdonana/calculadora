@@ -1,5 +1,10 @@
 <?php
 
+function selected($op, $o)
+{
+    return $op == $o ? 'selected' : '';
+}
+
 /**
  * Muestra un mensaje de error en pantalla.
  *
@@ -23,20 +28,7 @@ function error($mensaje)
  */
 function calcular($op1, $op2, $op)
 {
-    switch ($op) {
-        case '+':
-            $res = $op1 + $op2;
-            break;
-        case '-':
-            $res = $op1 - $op2;
-            break;
-        case '*':
-            $res = $op1 * $op2;
-            break;
-        case '/':
-            $res = $op1 / $op2;
-            break;
-    }
+    eval("\$res = \$op1 $op \$op2;");
 
     return $res;
 }
